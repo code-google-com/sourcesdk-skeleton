@@ -966,9 +966,6 @@
     <ClCompile Include="vgui_slideshow_display_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vgui_video.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -1929,9 +1926,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vgui_int.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="vgui_video.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vguicenterprint.h">

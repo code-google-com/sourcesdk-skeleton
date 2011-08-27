@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Client Skeleton</ProjectName>
-    <ProjectGuid>{09603CC0-928D-4939-83E5-C255291B9466}</ProjectGuid>
+    <ProjectName>Client (Swarm skeleton)</ProjectName>
+    <ProjectGuid>{A26C0361-6B09-9E3D-5194-C9CB89243710}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -34,43 +34,34 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <_ProjectFileVersion>10.0.30128.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)$(Configuration)_skeleton\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)</IntDir>
-    <PreBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PreBuildEventUseInBuild>
-    <PreLinkEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PreLinkEventUseInBuild>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug_swarm\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug_swarm\</IntDir>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</GenerateManifest>
-    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</PostBuildEventUseInBuild>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)$(Configuration)_skeleton\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</IntDir>
-    <PreBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</PreBuildEventUseInBuild>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release_swarm\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release_swarm\</IntDir>
     <PreLinkEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</PreLinkEventUseInBuild>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</GenerateManifest>
-    <PostBuildEventUseInBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</PostBuildEventUseInBuild>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">client</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">client</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">client</TargetName>
+    <CustomBuildAfterTargets Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    </CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
-    <CustomBuildStep>
-      <Message>
-      </Message>
-      <Command>if exist "..\..\game\sdk_skeleton\bin\client.dll" attrib -r "..\..\game\sdk_skeleton\bin\client.dll"
-if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_skeleton\bin\client.dll"</Command>
-      <Outputs>..\..\game\sdk_skeleton\bin\client.dll;%(Outputs)</Outputs>
-    </CustomBuildStep>
     <ClCompile>
       <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>.\sdk;.\sdk\vgui;..\..\game\shared\sdk;.\;..\..\common;..\..\public;..\..\public\tier0;..\..\public\tier1;..\..\vgui2\include;..\..\vgui2\controls;..\..\game\shared;.\game_controls;..\..\game\shared\multiplayer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WIN32;_DEBUG;DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;NO_STRING_T;CLIENT_DLL;VECTOR;PROTECTED_THINGS_ENABLE;fopen=dont_use_fopen;strncpy=use_Q_strncpy_instead;_snprintf=use_Q_snprintf_instead;ENABLE_HTMLWINDOW;VERSION_SAFE_STEAM_API_INTERFACES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\hl2;.\swarm;.\swarm\vgui;..\statemachine;..\..\game\shared\multiplayer;..\..\game\shared\swarm;.\;..\..\common;..\..\public;..\..\public\tier0;..\..\public\tier1;..\..\game\shared;.\game_controls;$(IntDir);..\..\game\client\swarm\gameui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32;_DEBUG;DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;DLLNAME=client;VPCGAME=swarm;VPCGAMECAPS=SWARM;_DLL_EXT=.dll;COMPILER_MSVC32;COMPILER_MSVC;MEMOVERRIDE_MODULE=client;NO_STRING_T;CLIENT_DLL;VECTOR;VERSION_SAFE_STEAM_API_INTERFACES;PROTECTED_THINGS_ENABLE;strncpy=use_Q_strncpy_instead;_snprintf=use_Q_snprintf_instead;ENABLE_HTMLWINDOW;fopen=dont_use_fopen;SWARM_DLL;GAMEUI_EMBEDDED;GAMEUI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>
@@ -78,6 +69,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -103,37 +95,32 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <Link>
       <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>NotSet</ShowProgress>
-      <OutputFile>$(OutDir)Client.dll</OutputFile>
+      <OutputFile>$(OutDir)client.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>..\..\lib\common;..\..\lib\public;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\lib\common\.;..\..\lib\public\.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libc;libcd;libcmtd;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
-      <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>$(IntDir)$(TargetName).map</MapFileName>
       <SubSystem>Windows</SubSystem>
       <BaseAddress>
       </BaseAddress>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
       <LinkErrorReporting>PromptImmediately</LinkErrorReporting>
     </Link>
     <Manifest>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <VerboseOutput>false</VerboseOutput>
     </Manifest>
     <Xdcmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Xdcmake>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(OutDir)Client.bsc</OutputFile>
+      <OutputFile>$(OutDir)client.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Message>Publishing client...</Message>
+      <Command>copy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)game\$(TargetFileName)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,26 +128,21 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
       <Command>
       </Command>
     </PreBuildEvent>
-    <CustomBuildStep>
-      <Message>
-      </Message>
-      <Command>if exist "..\..\game\sdk_skeleton\bin\client.dll" attrib -r "..\..\game\sdk_skeleton\bin\client.dll"
-if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_skeleton\bin\client.dll"</Command>
-      <Outputs>..\..\game\sdk_skeleton\bin\client.dll;%(Outputs)</Outputs>
-    </CustomBuildStep>
     <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>.\sdk;.\sdk\vgui;..\..\game\shared\sdk;.\;..\..\common;..\..\public;..\..\public\tier0;..\..\public\tier1;..\..\vgui2\include;..\..\vgui2\controls;..\..\game\shared;.\game_controls;..\..\game\shared\multiplayer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;NO_STRING_T;CLIENT_DLL;VECTOR;PROTECTED_THINGS_ENABLE;fopen=dont_use_fopen;strncpy=use_Q_strncpy_instead;_snprintf=use_Q_snprintf_instead;VERSION_SAFE_STEAM_API_INTERFACES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\hl2;.\swarm;.\swarm\vgui;..\statemachine;..\..\game\shared\multiplayer;..\..\game\shared\swarm;.\;..\..\common;..\..\public;..\..\public\tier0;..\..\public\tier1;..\..\game\shared;.\game_controls;$(IntDir);..\..\game\client\swarm\gameui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;DLLNAME=client;VPCGAME=swarm;VPCGAMECAPS=SWARM;_DLL_EXT=.dll;COMPILER_MSVC32;COMPILER_MSVC;MEMOVERRIDE_MODULE=client;NO_STRING_T;CLIENT_DLL;VECTOR;VERSION_SAFE_STEAM_API_INTERFACES;PROTECTED_THINGS_ENABLE;strncpy=use_Q_strncpy_instead;_snprintf=use_Q_snprintf_instead;ENABLE_HTMLWINDOW;fopen=dont_use_fopen;SWARM_DLL;GAMEUI_EMBEDDED;GAMEUI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>
       </ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -186,22 +168,18 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <Link>
       <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>NotSet</ShowProgress>
-      <OutputFile>$(OutDir)Client.dll</OutputFile>
+      <OutputFile>$(OutDir)client.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>..\..\lib\common;..\..\lib\public;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\lib\common\.;..\..\lib\public\.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libc;libcd;libcmtd;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(IntDir)$(TargetName).pdb</ProgramDatabaseFile>
-      <GenerateMapFile>true</GenerateMapFile>
       <MapFileName>$(IntDir)$(TargetName).map</MapFileName>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <BaseAddress>
       </BaseAddress>
-      <RandomizedBaseAddress>false</RandomizedBaseAddress>
-      <DataExecutionPrevention>
-      </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
       <LinkErrorReporting>PromptImmediately</LinkErrorReporting>
     </Link>
@@ -213,20 +191,49 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     </Xdcmake>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <OutputFile>$(OutDir)Client.bsc</OutputFile>
+      <OutputFile>$(OutDir)client.bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
+      <Message>Publishing client...</Message>
+      <Command>copy "$(TargetDir)$(TargetFileName)" "$(SolutionDir)game\$(TargetFileName)"</Command>
+    </PostBuildEvent>
+    <CustomBuildStep>
       <Command>
       </Command>
-    </PostBuildEvent>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="vscript_client.nut" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\common\language.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\shared\predicted_viewmodel.cpp" />
+    <ClCompile Include="..\shared\skeleton\multiplayer\basenetworkedplayer_gamemove.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\shared\skeleton\multiplayer\basenetworkedplayer_shared.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\shared\skeleton\multiplayer\multiplayer_animstate.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\shared\skeleton\skeleton_gamemovement.cpp" />
+    <ClCompile Include="..\shared\skeleton\skeleton_gamerules.cpp" />
+    <ClCompile Include="..\shared\skeleton\skeleton_parsers.cpp" />
+    <ClCompile Include="..\shared\skeleton\skeleton_usermessages.cpp" />
     <ClCompile Include="achievement_notification_panel.cpp" />
     <ClCompile Include="..\shared\achievement_saverestore.cpp" />
     <ClCompile Include="..\shared\achievementmgr.cpp" />
-    <ClCompile Include="..\shared\achievements_hlx.cpp" />
     <ClCompile Include="..\shared\activitylist.cpp" />
-    <ClCompile Include="alphamaterialproxy.cpp" />
+    <ClCompile Include="..\shared\ai_criteria.cpp" />
+    <ClCompile Include="..\shared\ai_responsesystem.cpp" />
+    <ClCompile Include="..\shared\ai_speechconcept.cpp" />
     <ClCompile Include="..\shared\ammodef.cpp" />
     <ClCompile Include="animatedentitytextureproxy.cpp" />
     <ClCompile Include="animatedoffsettextureproxy.cpp" />
@@ -243,18 +250,12 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="..\shared\basegrenade_shared.cpp" />
     <ClCompile Include="..\shared\baseparticleentity.cpp" />
     <ClCompile Include="..\shared\baseplayer_shared.cpp" />
-    <ClCompile Include="basepresence.cpp" />
     <ClCompile Include="..\shared\baseviewmodel_shared.cpp" />
     <ClCompile Include="..\shared\beam_shared.cpp" />
     <ClCompile Include="beamdraw.cpp" />
+    <ClCompile Include="..\..\common\blackbox_helper.cpp" />
     <ClCompile Include="..\..\public\bone_accessor.cpp" />
     <ClCompile Include="bone_merge_cache.cpp" />
-    <ClCompile Include="..\..\public\bone_setup.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      </PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      </PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="c_ai_basehumanoid.cpp" />
     <ClCompile Include="c_ai_basenpc.cpp" />
     <ClCompile Include="c_baseanimating.cpp" />
@@ -264,15 +265,23 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="c_basedoor.cpp" />
     <ClCompile Include="c_baseentity.cpp" />
     <ClCompile Include="c_baseflex.cpp" />
+    <ClCompile Include="c_baselesson.cpp" />
     <ClCompile Include="c_baseplayer.cpp" />
+    <ClCompile Include="c_basetoggle.cpp" />
     <ClCompile Include="c_baseviewmodel.cpp" />
+    <ClCompile Include="c_beamspotlight.cpp" />
     <ClCompile Include="c_breakableprop.cpp" />
     <ClCompile Include="c_colorcorrection.cpp" />
     <ClCompile Include="c_colorcorrectionvolume.cpp" />
     <ClCompile Include="c_dynamiclight.cpp" />
     <ClCompile Include="c_entitydissolve.cpp" />
+    <ClCompile Include="c_entityflame.cpp" />
+    <ClCompile Include="c_entityfreezing.cpp" />
     <ClCompile Include="c_entityparticletrail.cpp" />
+    <ClCompile Include="c_env_ambient_light.cpp" />
+    <ClCompile Include="c_env_dof_controller.cpp" />
     <ClCompile Include="c_env_fog_controller.cpp" />
+    <ClCompile Include="c_env_global_light.cpp" />
     <ClCompile Include="c_env_particlescript.cpp" />
     <ClCompile Include="c_env_projectedtexture.cpp" />
     <ClCompile Include="c_env_screenoverlay.cpp" />
@@ -281,21 +290,27 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="c_fish.cpp" />
     <ClCompile Include="c_func_areaportalwindow.cpp" />
     <ClCompile Include="c_func_breakablesurf.cpp" />
+    <ClCompile Include="c_func_brush.cpp" />
     <ClCompile Include="c_func_conveyor.cpp" />
     <ClCompile Include="c_func_dust.cpp" />
     <ClCompile Include="c_func_lod.cpp" />
+    <ClCompile Include="hl2\C_Func_Monitor.cpp" />
+    <ClCompile Include="c_func_movelinear.cpp" />
     <ClCompile Include="c_func_occluder.cpp" />
     <ClCompile Include="c_func_reflective_glass.cpp" />
     <ClCompile Include="c_func_rotating.cpp" />
     <ClCompile Include="c_func_smokevolume.cpp" />
     <ClCompile Include="c_func_tracktrain.cpp" />
+    <ClCompile Include="c_gameinstructor.cpp" />
     <ClCompile Include="c_gib.cpp" />
     <ClCompile Include="c_hairball.cpp" />
     <ClCompile Include="c_info_overlay_accessor.cpp" />
     <ClCompile Include="c_lightglow.cpp" />
     <ClCompile Include="C_MaterialModifyControl.cpp" />
+    <ClCompile Include="c_movie_display.cpp" />
     <ClCompile Include="c_particle_system.cpp" />
     <ClCompile Include="c_physbox.cpp" />
+    <ClCompile Include="c_physics_prop_statue.cpp" />
     <ClCompile Include="c_physicsprop.cpp" />
     <ClCompile Include="c_physmagnet.cpp" />
     <ClCompile Include="c_pixel_visibility.cpp" />
@@ -303,6 +318,8 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="c_playerresource.cpp" />
     <ClCompile Include="c_point_camera.cpp" />
     <ClCompile Include="c_point_commentary_node.cpp" />
+    <ClCompile Include="c_postprocesscontroller.cpp" />
+    <ClCompile Include="c_prop_hallucination.cpp" />
     <ClCompile Include="c_props.cpp" />
     <ClCompile Include="c_ragdoll_manager.cpp" />
     <ClCompile Include="c_rope.cpp" />
@@ -311,18 +328,22 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="c_shadowcontrol.cpp" />
     <ClCompile Include="c_slideshow_display.cpp" />
     <ClCompile Include="c_soundscape.cpp" />
+    <ClCompile Include="c_spatialentity.cpp" />
     <ClCompile Include="c_spotlight_end.cpp" />
     <ClCompile Include="c_sprite.cpp" />
     <ClCompile Include="c_sprite_perfmonitor.cpp" />
     <ClCompile Include="c_sun.cpp" />
+    <ClCompile Include="c_sunlightshadowcontrol.cpp" />
+    <ClCompile Include="c_surfacerender.cpp" />
     <ClCompile Include="c_team.cpp" />
-    <ClCompile Include="c_team_objectiveresource.cpp" />
     <ClCompile Include="c_tesla.cpp" />
     <ClCompile Include="c_test_proxytoggle.cpp" />
+    <ClCompile Include="c_triggers.cpp" />
     <ClCompile Include="c_user_message_register.cpp" />
     <ClCompile Include="c_vehicle_choreo_generic.cpp" />
     <ClCompile Include="c_vehicle_jeep.cpp" />
     <ClCompile Include="c_vguiscreen.cpp" />
+    <ClCompile Include="hl2\c_waterbullet.cpp" />
     <ClCompile Include="C_WaterLODControl.cpp" />
     <ClCompile Include="c_world.cpp" />
     <ClCompile Include="camomaterialproxy.cpp" />
@@ -339,13 +360,19 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     </ClCompile>
     <ClCompile Include="client_factorylist.cpp" />
     <ClCompile Include="client_thinklist.cpp" />
-    <ClCompile Include="clienteffectprecachesystem.cpp" />
+    <ClCompile Include="clientalphaproperty.cpp" />
     <ClCompile Include="cliententitylist.cpp" />
     <ClCompile Include="clientleafsystem.cpp" />
     <ClCompile Include="clientmode_shared.cpp" />
     <ClCompile Include="clientshadowmgr.cpp" />
     <ClCompile Include="clientsideeffects.cpp" />
     <ClCompile Include="clientsideeffects_test.cpp" />
+    <ClCompile Include="..\..\public\closedcaptions.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\shared\collisionproperty.cpp" />
     <ClCompile Include="..\..\public\collisionutils.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -361,13 +388,21 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="convarproxy.cpp" />
     <ClCompile Include="..\..\public\crtmemdebug.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="cycleproxy.cpp" />
     <ClCompile Include="..\shared\death_pose.cpp" />
+    <ClCompile Include="..\..\common\debug_dll_check.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\shared\debugoverlay_shared.cpp" />
     <ClCompile Include="..\shared\decals.cpp" />
     <ClCompile Include="detailobjectsystem.cpp" />
@@ -406,6 +441,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="flashlighteffect.cpp" />
+    <ClCompile Include="foundryhelpers_client.cpp" />
     <ClCompile Include="..\shared\func_ladder.cpp" />
     <ClCompile Include="functionproxy.cpp" />
     <ClCompile Include="fx_blood.cpp" />
@@ -420,6 +456,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="fx_tracer.cpp" />
     <ClCompile Include="fx_trail.cpp" />
     <ClCompile Include="fx_water.cpp" />
+    <ClCompile Include="..\shared\game_timescale_shared.cpp" />
     <ClCompile Include="..\shared\gamemovement.cpp" />
     <ClCompile Include="..\shared\gamerules.cpp" />
     <ClCompile Include="..\shared\gamerules_register.cpp" />
@@ -427,35 +464,30 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="..\shared\gamestringpool.cpp" />
     <ClCompile Include="gametrace_client.cpp" />
     <ClCompile Include="..\shared\gamevars_shared.cpp" />
-    <ClCompile Include="geiger.cpp" />
+    <ClCompile Include="glow_outline_effect.cpp" />
     <ClCompile Include="glow_overlay.cpp" />
     <ClCompile Include="..\shared\hintmessage.cpp" />
     <ClCompile Include="..\shared\hintsystem.cpp" />
     <ClCompile Include="history_resource.cpp" />
     <ClCompile Include="hltvcamera.cpp" />
     <ClCompile Include="hud.cpp" />
-    <ClCompile Include="hud_animationinfo.cpp" />
     <ClCompile Include="hud_basechat.cpp" />
-    <ClCompile Include="hud_basedeathnotice.cpp" />
     <ClCompile Include="hud_basetimer.cpp" />
     <ClCompile Include="hud_bitmapnumericdisplay.cpp" />
     <ClCompile Include="hud_closecaption.cpp" />
     <ClCompile Include="hud_crosshair.cpp" />
     <ClCompile Include="hud_element_helper.cpp" />
-    <ClCompile Include="hud_hintdisplay.cpp" />
     <ClCompile Include="hud_lcd.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="hud_locator_target.cpp" />
     <ClCompile Include="hud_msg.cpp" />
     <ClCompile Include="hud_numericdisplay.cpp" />
     <ClCompile Include="hud_pdump.cpp" />
     <ClCompile Include="hud_redraw.cpp" />
-    <ClCompile Include="hud_vehicle.cpp" />
-    <ClCompile Include="hud_voicestatus.cpp" />
-    <ClCompile Include="hud_weapon.cpp" />
     <ClCompile Include="..\shared\igamesystem.cpp" />
     <ClCompile Include="in_camera.cpp" />
     <ClCompile Include="in_joystick.cpp" />
@@ -466,15 +498,15 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="initializer.cpp" />
-    <ClCompile Include="interpolatedvar.cpp" />
-    <ClCompile Include="..\..\public\interpolatortypes.cpp">
+    <ClCompile Include="in_trackir.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\shared\interval.cpp">
+    <ClCompile Include="initializer.cpp" />
+    <ClCompile Include="..\..\public\tier1\interpolatedvar.cpp" />
+    <ClCompile Include="..\..\public\interpolatortypes.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -490,6 +522,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="lampbeamproxy.cpp" />
     <ClCompile Include="lamphaloproxy.cpp" />
     <ClCompile Include="..\shared\mapentities_shared.cpp" />
+    <ClCompile Include="materialproxydict.cpp" />
     <ClCompile Include="mathproxy.cpp" />
     <ClCompile Include="matrixproxy.cpp" />
     <ClCompile Include="..\..\public\tier0\memoverride.cpp">
@@ -500,6 +533,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     </ClCompile>
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="message.cpp" />
+    <ClCompile Include="modelrendersystem.cpp" />
     <ClCompile Include="movehelper_client.cpp" />
     <ClCompile Include="..\shared\movevars_shared.cpp" />
     <ClCompile Include="..\shared\mp_shareddefs.cpp" />
@@ -510,6 +544,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="object_motion_blur_effect.cpp" />
     <ClCompile Include="..\shared\obstacle_pushaway.cpp" />
     <ClCompile Include="panelmetaclassmgr.cpp" />
     <ClCompile Include="particle_collision.cpp" />
@@ -526,6 +561,12 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="particles_simple.cpp" />
     <ClCompile Include="..\shared\particlesystemquery.cpp" />
     <ClCompile Include="perfvisualbenchmark.cpp" />
+    <ClCompile Include="..\..\public\phonemeconverter.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="physics_main_client.cpp" />
     <ClCompile Include="..\shared\physics_main_shared.cpp" />
@@ -533,7 +574,6 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="..\shared\physics_shared.cpp" />
     <ClCompile Include="physpropclientside.cpp" />
     <ClCompile Include="playerandobjectenumerator.cpp" />
-    <ClCompile Include="..\shared\playerclass_info_parse.cpp" />
     <ClCompile Include="..\shared\point_bonusmaps_accessor.cpp" />
     <ClCompile Include="..\shared\point_posecontroller.cpp" />
     <ClCompile Include="..\..\public\posedebugger.cpp">
@@ -544,9 +584,10 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     </ClCompile>
     <ClCompile Include="..\shared\precache_register.cpp" />
     <ClCompile Include="..\shared\predictableid.cpp" />
-    <ClCompile Include="..\shared\predicted_viewmodel.cpp" />
     <ClCompile Include="prediction.cpp" />
     <ClCompile Include="..\shared\predictioncopy.cpp" />
+    <ClCompile Include="..\shared\predictioncopy_helpers.cpp" />
+    <ClCompile Include="..\shared\predictioncopy_test.cpp" />
     <ClCompile Include="..\shared\props_shared.cpp" />
     <ClCompile Include="proxyentity.cpp" />
     <ClCompile Include="ProxyHealth.cpp" />
@@ -567,6 +608,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="replaycamera.cpp" />
     <ClCompile Include="..\shared\rope_helpers.cpp" />
     <ClCompile Include="..\..\public\rope_physics.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -614,10 +656,33 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="..\shared\SoundEmitterSystem.cpp" />
     <ClCompile Include="..\shared\soundenvelope.cpp" />
     <ClCompile Include="..\..\public\SoundParametersInternal.cpp" />
+    <ClCompile Include="skeleton\clientmode_skeleton.cpp" />
+    <ClCompile Include="skeleton\c_skeleton_lesson.cpp" />
+    <ClCompile Include="skeleton\c_skeleton_player.cpp" />
+    <ClCompile Include="skeleton\GameUI\BaseModPanel.cpp" />
+    <ClCompile Include="skeleton\GameUI\UIGameData.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="skeleton\hud_weaponselection.cpp" />
+    <ClCompile Include="skeleton\multiplayer\basenetworkedplayer_cl.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="skeleton\multiplayer\basenetworkedragdoll_cl.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="skeleton\skeleton_fx.cpp" />
+    <ClCompile Include="skeleton\skeleton_in_main.cpp" />
+    <ClCompile Include="skeleton\skeleton_prediction.cpp" />
+    <ClCompile Include="skeleton\vgui_rootpanel_skeleton.cpp" />
+    <ClCompile Include="spatialentitymgr.cpp" />
     <ClCompile Include="splinepatch.cpp" />
     <ClCompile Include="..\shared\Sprite.cpp" />
     <ClCompile Include="spritemodel.cpp" />
     <ClCompile Include="..\shared\SpriteTrail.cpp" />
+    <ClCompile Include="..\shared\steamworks_gamestats.cpp" />
     <ClCompile Include="..\..\public\stringregistry.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
@@ -635,11 +700,190 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="..\shared\teamplay_gamerules.cpp" />
     <ClCompile Include="..\shared\teamplayroundbased_gamerules.cpp" />
     <ClCompile Include="..\shared\test_ehandle.cpp" />
+    <ClCompile Include="swarm\gameui\backgroundmenubutton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\basesavegamedialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\bitmapimagepanel.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\commandcheckbutton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\contentcontroldialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\createmultiplayergamebotpage.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\createmultiplayergamedialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\createmultiplayergamegameplaypage.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\createmultiplayergameserverpage.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\customtabexplanationdialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\cvarnegatecheckbutton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\cvarslider.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\cvartextentry.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\cvartogglecheckbutton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\gameconsole.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\gameconsoledialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\gameui_interface.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\gameui_util.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\keytogglecheckbutton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\labeledcommandcombobox.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\loadingdialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\loadingtippanel.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\logofile.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\modinfo.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\mousemessageforwardingpanel.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\multiplayeradvanceddialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionsdialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubaudio.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubdifficulty.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubgame.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubkeyboard.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubmouse.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubmultiplayer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubportal.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubvideo.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\optionssubvoice.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\panellistpanel.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\playerlistdialog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\rungameengine.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\scriptobject.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\sys_utils.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\textentrybox.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\urlbutton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\vcontrolslistpanel.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="swarm\gameui\vguisystemmoduleloader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="text_message.cpp" />
     <ClCompile Include="texturescrollmaterialproxy.cpp" />
     <ClCompile Include="timematerialproxy.cpp" />
     <ClCompile Include="toggletextureproxy.cpp" />
-    <ClCompile Include="train.cpp" />
     <ClCompile Include="..\shared\usercmd.cpp" />
     <ClCompile Include="..\shared\usermessages.cpp" />
     <ClCompile Include="..\shared\util_shared.cpp" />
@@ -652,6 +896,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="..\shared\vehicle_viewblend_shared.cpp" />
     <ClCompile Include="vgui_avatarimage.cpp" />
     <ClCompile Include="vgui_basepanel.cpp" />
+    <ClCompile Include="vgui_bindpanel.cpp" />
     <ClCompile Include="vgui_bitmapbutton.cpp" />
     <ClCompile Include="vgui_bitmapimage.cpp" />
     <ClCompile Include="vgui_bitmappanel.cpp" />
@@ -667,9 +912,11 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="vgui_fpspanel.cpp" />
     <ClCompile Include="vgui_game_viewport.cpp" />
     <ClCompile Include="vgui_grid.cpp" />
+    <ClCompile Include="vgui_hudvideo.cpp" />
     <ClCompile Include="vgui_int.cpp" />
     <ClCompile Include="vgui_loadingdiscpanel.cpp" />
     <ClCompile Include="vgui_messagechars.cpp" />
+    <ClCompile Include="vgui_movie_display.cpp" />
     <ClCompile Include="vgui_netgraphpanel.cpp" />
     <ClCompile Include="vgui_slideshow_display_screen.cpp" />
     <ClCompile Include="vgui_video.cpp" />
@@ -683,7 +930,10 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="viewpostprocess.cpp" />
     <ClCompile Include="viewrender.cpp" />
     <ClCompile Include="..\shared\voice_banmgr.cpp" />
+    <ClCompile Include="voice_menu.cpp" />
     <ClCompile Include="..\shared\voice_status.cpp" />
+    <ClCompile Include="vscript_client.cpp" />
+    <ClCompile Include="..\shared\vscript_shared.cpp" />
     <ClCompile Include="warp_overlay.cpp" />
     <ClCompile Include="WaterLODMaterialProxy.cpp" />
     <ClCompile Include="..\shared\weapon_parse.cpp" />
@@ -758,9 +1008,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="particlesphererenderer.cpp" />
     <ClCompile Include="smoke_fog_overlay.cpp" />
     <ClCompile Include="game_controls\basemodel_panel.cpp" />
-    <ClCompile Include="game_controls\basemodelpanel.cpp" />
     <ClCompile Include="game_controls\baseviewport.cpp" />
-    <ClCompile Include="game_controls\classmenu.cpp" />
     <ClCompile Include="game_controls\ClientScoreBoardDialog.cpp" />
     <ClCompile Include="game_controls\commandmenu.cpp" />
     <ClCompile Include="game_controls\IconPanel.cpp" />
@@ -770,53 +1018,126 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClCompile Include="game_controls\SpectatorGUI.cpp" />
     <ClCompile Include="game_controls\teammenu.cpp" />
     <ClCompile Include="game_controls\vguitextwindow.cpp" />
-    <ClCompile Include="..\shared\Multiplayer\multiplayer_animstate.cpp" />
     <ClCompile Include="mp3player.cpp" />
     <ClCompile Include="..\..\public\tools\bonelist.cpp" />
     <ClCompile Include="entity_client_tools.cpp" />
     <ClCompile Include="toolframework_client.cpp" />
-    <ClCompile Include="skeleton\clientmode_skeleton.cpp" />
-    <ClCompile Include="skeleton\hud_weaponselection.cpp" />
-    <ClCompile Include="skeleton\skeleton_fx.cpp" />
-    <ClCompile Include="skeleton\skeleton_in_main.cpp" />
-    <ClCompile Include="skeleton\skeleton_prediction.cpp" />
-    <ClCompile Include="skeleton\vgui_rootpanel_skeleton.cpp" />
-    <ClCompile Include="..\shared\skeleton\skeleton_gamemovement.cpp" />
-    <ClCompile Include="..\shared\skeleton\skeleton_gamerules.cpp" />
-    <ClCompile Include="..\shared\skeleton\skeleton_parsers.cpp" />
-    <ClCompile Include="..\shared\skeleton\skeleton_player.cpp" />
-    <ClCompile Include="..\shared\skeleton\skeleton_usermessages.cpp" />
-    <ClCompile Include="hud_chat.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\shared\predicted_viewmodel.h" />
+    <ClInclude Include="..\shared\skeleton\multiplayer\basenetworkedplayer_gamemove.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\shared\skeleton\multiplayer\basenetworkedplayer_shared.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\shared\skeleton\multiplayer\multiplayer_animstate.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="achievement_notification_panel.h" />
     <ClInclude Include="..\shared\achievement_saverestore.h" />
     <ClInclude Include="..\shared\achievementmgr.h" />
+    <ClInclude Include="..\shared\ai_criteria.h" />
+    <ClInclude Include="..\shared\ai_responsesystem.h" />
+    <ClInclude Include="..\shared\ai_speechconcept.h" />
     <ClInclude Include="..\shared\baseachievement.h" />
+    <ClInclude Include="..\..\common\blackbox_helper.h" />
+    <ClInclude Include="c_baselesson.h" />
+    <ClInclude Include="c_basetoggle.h" />
+    <ClInclude Include="c_colorcorrection.h" />
+    <ClInclude Include="c_env_ambient_light.h" />
+    <ClInclude Include="c_env_projectedtexture.h" />
+    <ClInclude Include="c_gameinstructor.h" />
+    <ClInclude Include="c_physics_prop_statue.h" />
+    <ClInclude Include="c_postprocesscontroller.h" />
     <ClInclude Include="c_props.h" />
     <ClInclude Include="c_slideshow_display.h" />
-    <ClInclude Include="c_team_objectiveresource.h" />
+    <ClInclude Include="c_spatialentity.h" />
     <ClInclude Include="cdll_bounded_cvars.h" />
     <ClInclude Include="commentary_modelviewer.h" />
-    <ClInclude Include="..\shared\GameStats.h" />
-    <ClInclude Include="hud_basedeathnotice.h" />
+    <ClInclude Include="foundryhelpers_client.h" />
+    <ClInclude Include="..\shared\game_timescale_shared.h" />
+    <ClInclude Include="hud_locator_target.h" />
+    <ClInclude Include="..\..\engine\iblackbox.h" />
+    <ClInclude Include="modelrendersystem.h" />
     <ClInclude Include="..\shared\particle_parse.h" />
     <ClInclude Include="..\shared\particle_property.h" />
-    <ClInclude Include="..\shared\playerclass_info_parse.h" />
     <ClInclude Include="..\shared\point_bonusmaps_accessor.h" />
+    <ClInclude Include="..\shared\postprocess_shared.h" />
+    <ClInclude Include="..\shared\sharedvar.h" />
+    <ClInclude Include="skeleton\clientmode_skeleton.h" />
+    <ClInclude Include="skeleton\c_skeleton_player.h" />
+    <ClInclude Include="skeleton\GameUI\UIGameData.h" />
+    <ClInclude Include="skeleton\multiplayer\basenetworkedplayer_cl.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="skeleton\multiplayer\basenetworkedragdoll_cl.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="spatialentitymgr.h" />
+    <ClInclude Include="swarm\gameui\backgroundmenubutton.h" />
+    <ClInclude Include="swarm\gameui\basepaenl.h" />
+    <ClInclude Include="swarm\gameui\basesavegamedialog.h" />
+    <ClInclude Include="swarm\gameui\bitmapimagepanel.h" />
+    <ClInclude Include="swarm\gameui\commandcheckbutton.h" />
+    <ClInclude Include="swarm\gameui\contentcontroldialog.h" />
+    <ClInclude Include="swarm\gameui\createmultiplayergamebotpage.h" />
+    <ClInclude Include="swarm\gameui\createmultiplayergamedialog.h" />
+    <ClInclude Include="swarm\gameui\createmultiplayergamegameplaypage.h" />
+    <ClInclude Include="swarm\gameui\createmultiplayergameserverpage.h" />
+    <ClInclude Include="swarm\gameui\customtabexplanationdialog.h" />
+    <ClInclude Include="swarm\gameui\cvarnegatecheckbutton.h" />
+    <ClInclude Include="swarm\gameui\cvarslider.h" />
+    <ClInclude Include="swarm\gameui\cvartextentry.h" />
+    <ClInclude Include="swarm\gameui\cvartogglecheckbutton.h" />
+    <ClInclude Include="swarm\gameui\engineinterface.h" />
+    <ClInclude Include="swarm\gameui\gameconsole.h" />
+    <ClInclude Include="swarm\gameui\gameconsoledialog.h" />
+    <ClInclude Include="swarm\gameui\gameui_interface.h" />
+    <ClInclude Include="swarm\gameui\gameui_util.h" />
+    <ClInclude Include="swarm\gameui\keytogglecheckbutton.h" />
+    <ClInclude Include="swarm\gameui\labeledcommandcombobox.h" />
+    <ClInclude Include="swarm\gameui\loadingdialog.h" />
+    <ClInclude Include="swarm\gameui\loadingtippanel.h" />
+    <ClInclude Include="swarm\gameui\modinfo.h" />
+    <ClInclude Include="swarm\gameui\mousemessageforwardingpanel.h" />
+    <ClInclude Include="swarm\gameui\multiplayeradvanceddialog.h" />
+    <ClInclude Include="swarm\gameui\optionsdialog.h" />
+    <ClInclude Include="swarm\gameui\optionssubaudio.h" />
+    <ClInclude Include="swarm\gameui\optionssubdifficulty.h" />
+    <ClInclude Include="swarm\gameui\optionssubgame.h" />
+    <ClInclude Include="swarm\gameui\optionssubkeyboard.h" />
+    <ClInclude Include="swarm\gameui\optionssubmouse.h" />
+    <ClInclude Include="swarm\gameui\optionssubmultiplayer.h" />
+    <ClInclude Include="swarm\gameui\optionssubportal.h" />
+    <ClInclude Include="swarm\gameui\optionssubvideo.h" />
+    <ClInclude Include="swarm\gameui\optionssubvoice.h" />
+    <ClInclude Include="swarm\gameui\panellistpanel.h" />
+    <ClInclude Include="swarm\gameui\playerlistdialog.h" />
+    <ClInclude Include="swarm\gameui\rungameengine.h" />
+    <ClInclude Include="swarm\gameui\scriptobject.h" />
+    <ClInclude Include="swarm\gameui\sys_utils.h" />
+    <ClInclude Include="swarm\gameui\textentrybox.h" />
+    <ClInclude Include="swarm\gameui\urlbutton.h" />
+    <ClInclude Include="swarm\gameui\vcontrolslistpanel.h" />
+    <ClInclude Include="swarm\gameui\vguisystemmoduleloader.h" />
     <ClInclude Include="vgui_avatarimage.h" />
     <ClInclude Include="viewdebug.h" />
     <ClInclude Include="viewpostprocess.h" />
+    <ClInclude Include="vscript_client.h" />
+    <ClInclude Include="..\shared\vscript_shared.h" />
     <ClInclude Include="game_controls\basemodel_panel.h" />
-    <ClInclude Include="game_controls\basemodelpanel.h" />
-    <ClInclude Include="..\shared\Multiplayer\multiplayer_animstate.h" />
     <ClInclude Include="mp3player.h" />
     <ClInclude Include="..\..\public\tools\bonelist.h" />
     <ClInclude Include="toolframework_client.h" />
     <ClInclude Include="animationlayer.h" />
     <ClInclude Include="baseanimatedtextureproxy.h" />
     <ClInclude Include="baseclientrendertargets.h" />
-    <ClInclude Include="basepresence.h" />
     <ClInclude Include="beamdraw.h" />
     <ClInclude Include="bone_merge_cache.h" />
     <ClInclude Include="c_ai_basenpc.h" />
@@ -833,12 +1154,15 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="c_breakableprop.h" />
     <ClInclude Include="c_effects.h" />
     <ClInclude Include="c_entitydissolve.h" />
+    <ClInclude Include="c_entityflame.h" />
+    <ClInclude Include="c_entityfreezing.h" />
     <ClInclude Include="c_env_fog_controller.h" />
     <ClInclude Include="c_fire_smoke.h" />
     <ClInclude Include="c_func_dust.h" />
     <ClInclude Include="c_func_reflective_glass.h" />
     <ClInclude Include="c_gib.h" />
     <ClInclude Include="c_impact_effects.h" />
+    <ClInclude Include="c_movie_display.h" />
     <ClInclude Include="c_physbox.h" />
     <ClInclude Include="c_physicsprop.h" />
     <ClInclude Include="c_pixel_visibility.h" />
@@ -854,6 +1178,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="c_soundscape.h" />
     <ClInclude Include="c_sprite.h" />
     <ClInclude Include="c_sun.h" />
+    <ClInclude Include="c_surfacerender.h" />
     <ClInclude Include="c_te_basebeam.h" />
     <ClInclude Include="c_te_effect_dispatch.h" />
     <ClInclude Include="c_te_legacytempents.h" />
@@ -861,6 +1186,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="c_team.h" />
     <ClInclude Include="c_tesla.h" />
     <ClInclude Include="c_tracer.h" />
+    <ClInclude Include="c_triggers.h" />
     <ClInclude Include="c_user_message_register.h" />
     <ClInclude Include="c_vehicle_jeep.h" />
     <ClInclude Include="c_vguiscreen.h" />
@@ -873,7 +1199,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="cl_mat_stub.h" />
     <ClInclude Include="client_factorylist.h" />
     <ClInclude Include="client_thinklist.h" />
-    <ClInclude Include="clienteffectprecachesystem.h" />
+    <ClInclude Include="clientalphaproperty.h" />
     <ClInclude Include="cliententitylist.h" />
     <ClInclude Include="clientleafsystem.h" />
     <ClInclude Include="clientmode.h" />
@@ -901,6 +1227,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="fx_trail.h" />
     <ClInclude Include="fx_water.h" />
     <ClInclude Include="..\shared\GameEventListener.h" />
+    <ClInclude Include="glow_outline_effect.h" />
     <ClInclude Include="glow_overlay.h" />
     <ClInclude Include="..\shared\hintmessage.h" />
     <ClInclude Include="..\shared\hintsystem.h" />
@@ -933,13 +1260,13 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="ihudlcd.h" />
     <ClInclude Include="iinput.h" />
     <ClInclude Include="iloadingdisc.h" />
+    <ClInclude Include="imaterialproxydict.h" />
     <ClInclude Include="imessagechars.h" />
     <ClInclude Include="in_main.h" />
     <ClInclude Include="inetgraphpanel.h" />
     <ClInclude Include="initializer.h" />
     <ClInclude Include="input.h" />
-    <ClInclude Include="interpolatedvar.h" />
-    <ClInclude Include="ipresence.h" />
+    <ClInclude Include="..\..\public\tier1\interpolatedvar.h" />
     <ClInclude Include="iprofiling.h" />
     <ClInclude Include="itextmessage.h" />
     <ClInclude Include="ivieweffects.h" />
@@ -947,10 +1274,11 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="iviewrender_beams.h" />
     <ClInclude Include="ivmodemanager.h" />
     <ClInclude Include="kbutton.h" />
-    <ClInclude Include="lerp_functions.h" />
+    <ClInclude Include="keybindinglistener.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="movehelper_client.h" />
     <ClInclude Include="networkstringtable_clientdll.h" />
+    <ClInclude Include="object_motion_blur_effect.h" />
     <ClInclude Include="panelmetaclassmgr.h" />
     <ClInclude Include="particle_collision.h" />
     <ClInclude Include="particle_iterators.h" />
@@ -963,6 +1291,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="particles_attractor.h" />
     <ClInclude Include="particles_ez.h" />
     <ClInclude Include="particles_localspace.h" />
+    <ClInclude Include="particles_new.h" />
     <ClInclude Include="particles_simple.h" />
     <ClInclude Include="particlesphererenderer.h" />
     <ClInclude Include="perfvisualbenchmark.h" />
@@ -977,25 +1306,27 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="ragdollexplosionenumerator.h" />
     <ClInclude Include="recvproxy.h" />
     <ClInclude Include="rendertexture.h" />
+    <ClInclude Include="replaycamera.h" />
     <ClInclude Include="ScreenSpaceEffects.h" />
     <ClInclude Include="simple_keys.h" />
     <ClInclude Include="smoke_fog_overlay.h" />
     <ClInclude Include="splinepatch.h" />
-    <ClInclude Include="..\..\steam\steam_api.h" />
+    <ClInclude Include="..\..\public\steam\steam_api.h" />
     <ClInclude Include="TeamBitmapImage.h" />
     <ClInclude Include="tempent.h" />
     <ClInclude Include="text_message.h" />
     <ClInclude Include="timedevent.h" />
     <ClInclude Include="toggletextureproxy.h" />
     <ClInclude Include="vgui_basepanel.h" />
+    <ClInclude Include="vgui_bindpanel.h" />
     <ClInclude Include="vgui_bitmapbutton.h" />
     <ClInclude Include="vgui_bitmapimage.h" />
     <ClInclude Include="vgui_bitmappanel.h" />
     <ClInclude Include="vgui_entityimagepanel.h" />
     <ClInclude Include="vgui_entitypanel.h" />
     <ClInclude Include="vgui_grid.h" />
-    <ClInclude Include="tf2\vgui_healthbar.h" />
     <ClInclude Include="vgui_helpers.h" />
+    <ClInclude Include="vgui_hudvideo.h" />
     <ClInclude Include="vgui_imagehealthpanel.h" />
     <ClInclude Include="vgui_int.h" />
     <ClInclude Include="vgui_video.h" />
@@ -1007,10 +1338,9 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="viewrender.h" />
     <ClInclude Include="weapon_selection.h" />
     <ClInclude Include="weapons_resource.h" />
-    <ClInclude Include="..\..\public\mathlib\amd3dx.h" />
     <ClInclude Include="..\..\public\vgui_controls\AnimationController.h" />
     <ClInclude Include="..\..\public\basehandle.h" />
-    <ClInclude Include="..\..\public\basetypes.h" />
+    <ClInclude Include="..\..\public\tier0\basetypes.h" />
     <ClInclude Include="..\..\public\tier1\bitbuf.h" />
     <ClInclude Include="..\..\public\bitvec.h" />
     <ClInclude Include="..\..\public\bone_accessor.h" />
@@ -1020,20 +1350,21 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\..\public\bsptreedata.h" />
     <ClInclude Include="..\..\public\mathlib\bumpvects.h" />
     <ClInclude Include="..\..\public\vgui_controls\Button.h" />
-    <ClInclude Include="..\..\public\cache_user.h" />
     <ClInclude Include="..\..\public\cdll_int.h" />
     <ClInclude Include="..\..\public\tier1\characterset.h" />
     <ClInclude Include="..\..\public\tier1\checksum_md5.h" />
+    <ClInclude Include="..\..\public\vgui_controls\CircularProgressBar.h" />
     <ClInclude Include="..\..\public\client_class.h" />
     <ClInclude Include="..\..\public\client_render_handle.h" />
     <ClInclude Include="..\..\public\client_textmessage.h" />
     <ClInclude Include="..\..\public\clientstats.h" />
+    <ClInclude Include="..\..\public\closedcaptions.h" />
     <ClInclude Include="..\..\public\cmodel.h" />
     <ClInclude Include="..\..\public\vphysics\collision_set.h" />
     <ClInclude Include="..\..\public\collisionutils.h" />
     <ClInclude Include="..\..\public\Color.h" />
     <ClInclude Include="..\..\public\vgui_controls\ComboBox.h" />
-    <ClInclude Include="..\..\public\commonmacros.h" />
+    <ClInclude Include="..\..\public\tier0\commonmacros.h" />
     <ClInclude Include="..\..\public\mathlib\compressed_light_cube.h" />
     <ClInclude Include="..\..\public\mathlib\compressed_vector.h" />
     <ClInclude Include="..\..\public\con_nprint.h" />
@@ -1067,6 +1398,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\..\public\vgui_controls\HTML.h" />
     <ClInclude Include="..\..\public\iachievementmgr.h" />
     <ClInclude Include="..\..\public\appframework\IAppSystem.h" />
+    <ClInclude Include="..\..\public\iclientalphaproperty.h" />
     <ClInclude Include="..\..\public\icliententity.h" />
     <ClInclude Include="..\..\public\icliententitylist.h" />
     <ClInclude Include="..\..\public\engine\IClientLeafSystem.h" />
@@ -1077,7 +1409,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\..\public\iclientthinkable.h" />
     <ClInclude Include="..\..\public\iclientunknown.h" />
     <ClInclude Include="..\..\public\engine\ICollideable.h" />
-    <ClInclude Include="..\..\public\vstdlib\ICommandLine.h" />
+    <ClInclude Include="..\..\public\tier0\icommandline.h" />
     <ClInclude Include="..\..\public\icvar.h" />
     <ClInclude Include="..\..\public\iefx.h" />
     <ClInclude Include="..\..\public\engine\IEngineSound.h" />
@@ -1108,6 +1440,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\..\public\inetchannelinfo.h" />
     <ClInclude Include="..\..\public\tier1\interface.h" />
     <ClInclude Include="..\..\public\interpolatortypes.h" />
+    <ClInclude Include="..\..\public\tier2\interval.h" />
     <ClInclude Include="..\..\public\vgui\IPanel.h" />
     <ClInclude Include="..\..\public\iprediction.h" />
     <ClInclude Include="..\..\public\irecipientfilter.h" />
@@ -1126,19 +1459,17 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\..\public\vgui\ISystem.h" />
     <ClInclude Include="..\..\public\materialsystem\itexture.h" />
     <ClInclude Include="..\..\public\engine\ivdebugoverlay.h" />
-    <ClInclude Include="..\..\public\engine\IVEngineCache.h" />
     <ClInclude Include="..\..\public\vgui\IVGui.h" />
-    <ClInclude Include="..\..\public\ivguicenterprint.h" />
     <ClInclude Include="..\..\public\game\client\iviewport.h" />
     <ClInclude Include="..\..\public\engine\ivmodelinfo.h" />
     <ClInclude Include="..\..\public\engine\ivmodelrender.h" />
     <ClInclude Include="..\..\public\ivrenderview.h" />
     <ClInclude Include="..\..\public\jigglebones.h" />
     <ClInclude Include="..\..\public\vgui\KeyCode.h" />
-    <ClInclude Include="..\..\public\keydefs.h" />
     <ClInclude Include="..\..\public\tier1\KeyValues.h" />
     <ClInclude Include="..\..\public\tier0\l2cache.h" />
     <ClInclude Include="..\..\public\vgui_controls\Label.h" />
+    <ClInclude Include="..\..\public\tier1\lerp_functions.h" />
     <ClInclude Include="..\..\public\vgui_controls\ListPanel.h" />
     <ClInclude Include="..\..\public\mathlib\mathlib.h" />
     <ClInclude Include="..\..\public\tier0\mem.h" />
@@ -1148,7 +1479,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\..\public\tier1\mempool.h" />
     <ClInclude Include="..\..\public\vgui_controls\Menu.h" />
     <ClInclude Include="..\..\public\vgui_controls\MenuItem.h" />
-    <ClInclude Include="..\..\public\vgui\MessageMap.h" />
+    <ClInclude Include="..\..\public\vgui_controls\MessageMap.h" />
     <ClInclude Include="..\..\public\model_types.h" />
     <ClInclude Include="..\..\public\vgui\MouseCode.h" />
     <ClInclude Include="..\..\public\mouthinfo.h" />
@@ -1165,14 +1496,13 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\..\public\PlayerState.h" />
     <ClInclude Include="..\..\public\mathlib\polyhedron.h" />
     <ClInclude Include="..\..\public\tier1\processor_detect.h" />
-    <ClInclude Include="..\..\public\protected_things.h" />
+    <ClInclude Include="..\..\public\tier0\protected_things.h" />
     <ClInclude Include="..\..\public\r_efx.h" />
     <ClInclude Include="..\..\public\vstdlib\random.h" />
     <ClInclude Include="..\..\public\tier1\rangecheckedvar.h" />
     <ClInclude Include="..\..\public\vgui_controls\RichText.h" />
     <ClInclude Include="..\..\public\rope_physics.h" />
     <ClInclude Include="..\..\public\rope_shared.h" />
-    <ClInclude Include="..\..\public\s3_intrf.h" />
     <ClInclude Include="..\..\public\saverestoretypes.h" />
     <ClInclude Include="..\..\public\scratchpad3d.h" />
     <ClInclude Include="..\..\public\ScratchPadUtils.h" />
@@ -1200,7 +1530,6 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\..\public\tier1\utlbidirectionalset.h" />
     <ClInclude Include="..\..\public\tier1\utlbuffer.h" />
     <ClInclude Include="..\..\public\tier1\utldict.h" />
-    <ClInclude Include="..\..\public\tier1\utlfixedlinkedlist.h" />
     <ClInclude Include="..\..\public\tier1\utlfixedmemory.h" />
     <ClInclude Include="..\..\public\tier1\utlhash.h" />
     <ClInclude Include="..\..\public\tier1\utllinkedlist.h" />
@@ -1241,11 +1570,13 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\shared\cstrike\basecsgrenade_projectile.h" />
     <ClInclude Include="..\shared\baseentity_shared.h" />
     <ClInclude Include="..\shared\basegrenade_shared.h" />
+    <ClInclude Include="..\shared\hl2\basehlcombatweapon_shared.h" />
     <ClInclude Include="..\shared\baseparticleentity.h" />
     <ClInclude Include="..\shared\baseplayer_shared.h" />
     <ClInclude Include="..\shared\baseviewmodel_shared.h" />
     <ClInclude Include="..\shared\beam_flags.h" />
     <ClInclude Include="..\shared\beam_shared.h" />
+    <ClInclude Include="..\shared\cellcoord.h" />
     <ClInclude Include="..\shared\choreoactor.h" />
     <ClInclude Include="..\shared\choreochannel.h" />
     <ClInclude Include="..\shared\choreoevent.h" />
@@ -1269,16 +1600,18 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\shared\gamemovement.h" />
     <ClInclude Include="..\shared\gamerules.h" />
     <ClInclude Include="..\shared\gamerules_register.h" />
+    <ClInclude Include="..\shared\GameStats.h" />
     <ClInclude Include="..\shared\gamestringpool.h" />
     <ClInclude Include="..\shared\gamevars_shared.h" />
     <ClInclude Include="..\shared\groundlink.h" />
+    <ClInclude Include="..\shared\hl2\hl2_player_shared.h" />
+    <ClInclude Include="..\shared\hl2\hl_movedata.h" />
     <ClInclude Include="..\shared\ichoreoeventcallback.h" />
     <ClInclude Include="..\shared\IEffects.h" />
     <ClInclude Include="..\shared\igamemovement.h" />
     <ClInclude Include="..\shared\igamesystem.h" />
     <ClInclude Include="..\shared\imovehelper.h" />
     <ClInclude Include="..\shared\in_buttons.h" />
-    <ClInclude Include="..\shared\interval.h" />
     <ClInclude Include="..\shared\iplayeranimstate.h" />
     <ClInclude Include="..\shared\ipredictionsystem.h" />
     <ClInclude Include="..\shared\itempents.h" />
@@ -1301,6 +1634,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\shared\predictableid.h" />
     <ClInclude Include="..\shared\predictioncopy.h" />
     <ClInclude Include="..\shared\ragdoll_shared.h" />
+    <ClInclude Include="..\..\public\responserules\response_types.h" />
     <ClInclude Include="..\shared\rope_helpers.h" />
     <ClInclude Include="..\shared\saverestore.h" />
     <ClInclude Include="..\shared\saverestore_bitstring.h" />
@@ -1321,6 +1655,7 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\shared\soundenvelope.h" />
     <ClInclude Include="..\shared\Sprite.h" />
     <ClInclude Include="..\shared\SpriteTrail.h" />
+    <ClInclude Include="..\shared\steamworks_gamestats.h" />
     <ClInclude Include="..\shared\sun_shared.h" />
     <ClInclude Include="..\shared\takedamageinfo.h" />
     <ClInclude Include="..\shared\teamplay_gamerules.h" />
@@ -1341,11 +1676,10 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="..\shared\vphysics_sound.h" />
     <ClInclude Include="..\shared\cstrike\weapon_flashbang.h" />
     <ClInclude Include="..\shared\cstrike\weapon_hegrenade.h" />
-    <ClInclude Include="..\shared\tf2\weapon_objectselection.h" />
+    <ClInclude Include="..\shared\weapon_ifmsteadycam.h" />
     <ClInclude Include="..\shared\weapon_parse.h" />
     <ClInclude Include="..\shared\weapon_proficiency.h" />
     <ClInclude Include="game_controls\baseviewport.h" />
-    <ClInclude Include="game_controls\classmenu.h" />
     <ClInclude Include="game_controls\clientscoreboarddialog.h" />
     <ClInclude Include="game_controls\commandmenu.h" />
     <ClInclude Include="game_controls\IconPanel.h" />
@@ -1354,25 +1688,34 @@ if exist "$(TargetDir)"client.dll copy "$(TargetDir)"client.dll "..\..\game\sdk_
     <ClInclude Include="game_controls\mapoverview.h" />
     <ClInclude Include="game_controls\mouseoverhtmlbutton.h" />
     <ClInclude Include="game_controls\mouseoverpanelbutton.h" />
+    <ClInclude Include="game_controls\NavProgress.h" />
     <ClInclude Include="game_controls\spectatorgui.h" />
     <ClInclude Include="game_controls\teammenu.h" />
     <ClInclude Include="game_controls\vguitextwindow.h" />
-    <ClInclude Include="..\shared\skeleton\skeleton_player.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\lib\public\bitmap.lib" />
+    <Library Include="..\..\lib\public\bonesetup.lib" />
     <Library Include="..\..\lib\public\choreoobjects.lib" />
     <Library Include="..\..\lib\public\dmxloader.lib" />
+    <Library Include="..\..\lib\public\interfaces.lib" />
+    <Library Include="..\..\lib\common\jpeglib.lib" />
     <Library Include="..\..\lib\public\mathlib.lib" />
     <Library Include="..\..\lib\public\matsys_controls.lib" />
+    <Library Include="..\..\lib\public\npsclient.lib" />
     <Library Include="..\..\lib\public\particles.lib" />
+    <Library Include="..\..\lib\public\raytrace.lib" />
+    <Library Include="..\..\lib\public\responserules_runtime.lib" />
     <Library Include="..\..\lib\public\steam_api.lib" />
     <Library Include="..\..\lib\public\tier0.lib" />
     <Library Include="..\..\lib\public\tier1.lib" />
     <Library Include="..\..\lib\public\tier2.lib" />
     <Library Include="..\..\lib\public\tier3.lib" />
     <Library Include="..\..\lib\public\vgui_controls.lib" />
+    <Library Include="..\..\lib\public\videocfg.lib" />
+    <Library Include="..\..\lib\public\vpklib.lib" />
     <Library Include="..\..\lib\public\vstdlib.lib" />
+    <Library Include="..\..\lib\public\vtf.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

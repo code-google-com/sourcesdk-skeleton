@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="9.00"
 	Name="Client Skeleton"
 	ProjectGUID="{09603CC0-928D-4939-83E5-C255291B9466}"
 	TargetFrameworkVersion="131072"
@@ -2015,10 +2015,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\vgui_video.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\view.cpp"
 				>
 			</File>
@@ -3284,10 +3280,6 @@
 			</File>
 			<File
 				RelativePath=".\vgui_int.h"
-				>
-			</File>
-			<File
-				RelativePath=".\vgui_video.h"
 				>
 			</File>
 			<File
